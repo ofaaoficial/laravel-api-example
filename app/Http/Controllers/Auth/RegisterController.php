@@ -77,11 +77,11 @@ class RegisterController extends Controller
     public function register(Request $request){
         $v = $this->validator($request->all());
 
-        if($v->fails()) if($v->fails()) return response()->json($v->errors(), 400);
+        if($v->fails()) if($v->fails()) return $this->bad($v->errors());
 
         $user = $this->create($request->all());
         $this->guard()->login($user);
 
-        return response()->json(['message' => 'Usuario registrado correctamente.', 'token' => $user->token], 201);
+        return $this->successRegister(['message' => 'Usuario registrado correctamente.', 'token' => $user->token]);
     }
 }

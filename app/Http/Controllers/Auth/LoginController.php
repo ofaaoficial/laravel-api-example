@@ -59,10 +59,10 @@ class LoginController extends Controller
             $user->token_state = 'on';
             $user->save();
 
-            return response()->json(['message' => 'Ingreso satisfactorio.', 'token' => $user->token], 200);
+            return $this->success(['message' => 'Ingreso satisfactorio.', 'token' => $user->token]);
         }
 
-        return response()->json(['message' => 'Datos de acceso incorrectos.'], 400);
+        return $this->bad(['message' => 'Datos de acceso incorrectos.']);
 
     }
 
@@ -74,9 +74,9 @@ class LoginController extends Controller
         if($user){
             $user->token_state = 'off';
             $user->save();
-            return response()->json(['message' => 'Cierre de sesion satisfactorio.'], 200);
+            return $this->success(['message' => 'Cierre de sesion satisfactorio.']);
         }
 
-        return response()->json(['message' => 'Informacion no procesada.'], 422);
+        return $this->bad();
     }
 }
