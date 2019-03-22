@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\User;
 
@@ -54,15 +55,28 @@ class LoginController extends Controller
         if($v->fails()) return response()->json($v->errors(), 400);
 
         if($this->attemptLogin($request)){
-            $user = User::where('username', $request->username)->first();
+            $user = $this->guard()->user();
             $user->token_state = 'on';
             $user->save();
 
             return response()->json(['message' => 'Ingreso satisfactorio.', 'token' => $user->token], 200);
-        }else{
-            return response()->json(['message' => 'Datos de acceso incorrectos.'], 400);
         }
 
+        return response()->json(['message' => 'Datos de acceso incorrectos.'], 400);
 
+    }
+
+    public function logout(Request $request){
+        $this->guard()->logout();
+        $token = $request->bearerToken() ?: $request->token;
+
+        $user = User::where(['token_state' => 'on', 'token' => $token])->first();
+        if($user){
+            $user->token_state = 'off';
+            $user->save();
+            return response()->json(['message' => 'Cierre de sesion satisfactorio.'], 200);
+        }
+
+        return response()->json(['message' => 'Informacion no procesada.'], 422);
     }
 }
