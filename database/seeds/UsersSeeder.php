@@ -17,7 +17,8 @@ class UsersSeeder extends Seeder
             'email' => 'oscarfamado@gmail.com',
             'username' => 'ofaaoficial',
             'password' => bcrypt('ofaaoficial'),
-            'token' => md5('username')
+            'token' => md5('username'),
+            'role_id' => 1
         ]);
     }
 }

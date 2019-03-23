@@ -22,6 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('token')->unique();
             $table->enum('token_state', ['on', 'off'])->default('off');
+
+            $table->unsignedBigInteger('role_id')->default(2);
+            $table->foreign('role_id')->references('id')->on('roles');
+
             $table->rememberToken();
             $table->timestamps();
         });
