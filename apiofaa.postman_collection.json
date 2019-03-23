@@ -179,6 +179,41 @@
 							"response": []
 						},
 						{
+							"name": "Login Usuario",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "usuario",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "usuario",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost/apiofaa/public/api/login",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"apiofaa",
+										"public",
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Login failed 1",
 							"request": {
 								"method": "POST",
@@ -373,6 +408,16 @@
 				{
 					"name": "All department",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -397,6 +442,16 @@
 				{
 					"name": "Create department",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -451,6 +506,16 @@
 				{
 					"name": "Create deparment failed 2",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -479,8 +544,59 @@
 					"response": []
 				},
 				{
+					"name": "Create department failed 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department?",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Bogota D.C",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Find department",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -529,8 +645,53 @@
 					"response": []
 				},
 				{
+					"name": "Find department failed 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department/99",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update department",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -592,8 +753,102 @@
 					"response": []
 				},
 				{
+					"name": "Update department failed 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department/1?",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Departamento Editado",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update department failed 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "f8032d5cae3de20fcec887f395ec9a6a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department/1?",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Departamento Editado",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete department",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -636,6 +891,76 @@
 								"api",
 								"department",
 								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete department failed 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "14c4b06b824ec593239362517f538b29",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department/99",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete department failed 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "f8032d5cae3de20fcec887f395ec9a6a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/apiofaa/public/api/department/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apiofaa",
+								"public",
+								"api",
+								"department",
+								"1"
 							]
 						}
 					},
