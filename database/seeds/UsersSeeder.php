@@ -20,5 +20,13 @@ class UsersSeeder extends Seeder
             'token' => md5('username'),
             'role_id' => 1
         ]);
+
+        User::create([
+            'name' => 'usuario',
+            'email' => 'usuario@gmail.com',
+            'username' => 'usuario',
+            'password' => bcrypt('usuario'),
+            'token' => md5('usuario'),
+        ]);
     }
 }
