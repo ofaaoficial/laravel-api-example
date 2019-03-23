@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use Illuminate\Http\Request;
+use Validator;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAuthenticated');
+        $this->middleware('isAdmin')->only(['destroy', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +21,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->success(Role::all());
     }
 
     /**
@@ -35,51 +32,63 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v = Validator::make($request->all(), [
+            'name' => 'required|unique:roles'
+        ]);
+
+        if ($v->fails()) return $this->bad($v->errors());
+
+        Role::create($request->all());
+
+        return $this->successRegister();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Role  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show($id)
     {
-        //
-    }
+        $role = Role::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
+        if($role) return $this->success($role);
+
+        return $this->bad();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
+     * @param  \App\Role  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+
+        if (!count($request->all()) || !$role) return $this->bad();
+
+        $role->update($request->all());
+        return $this->success();
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Role  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+
+        if (! $role) return $this->bad();
+
+        $role->delete();
+        return $this->success();
     }
 }
