@@ -12,7 +12,7 @@ Cada uno tiene una ***migración*** que se encarga de generar una tabla en la ba
 
 Cree tres ***middlwares***, dos de ellos se encargan de la seguridad del sistema y otro es una implementación básica de [CORS](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS).
 
-* 🔒 isAuthenticated – Verifica si el token recibido es válido, además si pertenece a un usuario registrador.
+* 🔒 isAuthenticated – Verifica si el token recibido es válido, además si pertenece a un usuario registrado.
 * 🔒 isAdmin – Verifica si el usuario tiene el rol administrador en el sistema.
 * 🌎 Cors – Es un mecanismo en los headers que permite que se puedan solicitar recursos desde otros dominós o host. (Para que terceros puedan interactuar con la API).
 
